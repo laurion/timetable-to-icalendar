@@ -1,0 +1,53 @@
+from icalendar import Calendar, Event
+from datetime import date, datetime, timedelta
+from pytz import timezone
+import pytz, sys
+
+cal = Calendar()
+tz = timezone('Europe/Bucharest')
+fin = sys.stdin
+events = []
+
+periods = map(int, fin.readline().split())
+session = map(int, fin.readline().split())
+
+while True:
+  name = fin.readline().strip()
+  if not name:
+    break
+  evt = map(int, fin.readline().split())
+  if len(evt) == 3:
+    evt.append(0)
+  evt.append(name)
+  events.append(evt)
+
+even = False
+i = 0
+n = len(periods)
+while n - i >= 6:
+  week = datetime(periods[i+2], periods[i+1], periods[i+0], tzinfo=tz)
+  last_week = datetime(periods[i+5], periods[i+4], periods[i+3], tzinfo=tz)
+  while (week <= last_week):
+    for c in events:
+      if c[3] > 0 and ((even and c[3] == 1) or (not even and c[3] == 2)):
+        continue
+      event = Event()
+      event.add('summary', c[4])
+      event.add('dtstart', week + timedelta(c[0], 0, 0, 0, 0, c[1]))
+      event.add('dtend', week + timedelta(c[0], 0, 0, 0, 0, c[2]))
+      cal.add_component(event)
+    week = week + timedelta(weeks=1)
+    even = not even
+  i += 6
+
+i = 0
+n = len(session)
+while n - i >= 6:
+  event = Event()
+  event.add('summary', 'Session')
+  event.add('dtstart', date(session[i+2], session[i+1], session[i+0]))
+  event.add('dtend', date(session[i+5], session[i+4], session[i+3]) + timedelta(days=1))
+  cal.add_component(event)
+  i += 6
+
+sys.stdout.write(cal.to_ical())
