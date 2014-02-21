@@ -45,7 +45,7 @@ i = 0
 n = len(session)
 while n - i >= 6:
   event = Event()
-  event.add('summary', 'Session')
+  event.add('summary', 'Sesiune')
   event.add('dtstart', date(session[i+2], session[i+1], session[i+0]))
   event.add('dtend', date(session[i+5], session[i+4], session[i+3]) + timedelta(days=1))
   cal.add_component(event)
