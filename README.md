@@ -2,6 +2,7 @@ timetable-to-icalendar
 ======================
 
 Exports school timetable to a calendar format
+Creates a .ics file that you can import in google calendar or iCalendar.
 
 ## Install
 
@@ -34,7 +35,7 @@ Example:
 			* (optional) even or odd week (1 for odd, 2 for even)
 
 ## Run
-```./convert < [inputfile] > [outputfile.ics]```
+```./convert < [configfile] > [outputfile.ics]```
 
 Example:
 ```./convert < FMI\ 134.txt > FMI\ 134.ics```
