@@ -1,9 +1,7 @@
 Timetable to Calendar
 ======================
 
-> Exports school timetable to a calendar format.
-
-> Creates a .ics file that you can import in google calendar or iCalendar.
+Creates a .ics file that you can import in google calendar or iCalendar.
 
 ## Install
 
