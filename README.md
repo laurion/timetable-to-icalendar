@@ -3,13 +3,13 @@ timetable-to-icalendar
 
 Exports school timetable to a calendar format
 
-## Installation
+## Install
 
-* Install icalendar module
+Install the icalendar module
 
 	`easy_install icalendar`
-	
-* Describe your timetable in a text file (see `FMI 134.txt`)
+## Configure
+Describe your timetable in a text file (see `FMI 134.txt`)
     * first line the start and end dates of the semester
     `17 02 2014  23 05 2014`
 	* second line the start and end dates of the exam period
@@ -29,7 +29,8 @@ Exports school timetable to a calendar format
 				* start and end hour (18-20)
 				* (optional) even or odd week (1 for odd, 2 for even)
 
-* Run the script 
-	```./convert < [inputfile] > [outputfile.ics]```
-	
-	```./convert < FMI\ 134.txt > FMI\ 134.ics```
+## Run
+```./convert < [inputfile] > [outputfile.ics]```
+
+Example:
+```./convert < FMI\ 134.txt > FMI\ 134.ics```
